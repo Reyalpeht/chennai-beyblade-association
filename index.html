@@ -312,20 +312,20 @@ Official Home of Competitive Beyblade X in Chennai
 <div class="stats-container">
 
 <div class="stat-card">
-<div class="stat-number">15</div>
-<div class="stat-title">TOURNAMENTS</div>
+    <div class="stat-number" id="totalTournaments">0</div>
+    <div class="stat-title">TOURNAMENTS</div>
 </div>
 
 <div class="stat-card">
-<div class="stat-number">72</div>
-<div class="stat-title">REGISTERED PLAYERS</div>
+    <div class="stat-number" id="totalPlayers">0</div>
+    <div class="stat-title">REGISTERED PLAYERS</div>
 </div>
 
 <div class="stat-card">
-<div class="stat-number">384</div>
-<div class="stat-title">MATCHES PLAYED</div>
+    <div class="stat-number" id="totalMatches">0</div>
+    <div class="stat-title">MATCHES PLAYED</div>
 </div>
-
+    
 </div>
 
 </section>
@@ -336,19 +336,7 @@ Official Home of Competitive Beyblade X in Chennai
 FEATURED TOURNAMENT
 </h2>
 
-<div class="featured-card">
-
-<h2>THE NEW DAWN</h2>
-
-<p>
-Beyblade X Tournament • Chennai
-</p>
-
-<a href="#" class="btn-yellow">
-VIEW DETAILS
-</a>
-
-</div>
+<div id="featuredTournament"></div>
 
 </section>
 
@@ -359,6 +347,168 @@ VIEW DETAILS
 </p>
 
 </footer>
+
+<script>
+
+/****************************
+CSV URLS
+****************************/
+
+const tournamentsCsv =
+"YOUR_TOURNAMENTS_CSV_URL";
+
+const rankingsCsv =
+"YOUR_RANKINGS_CSV_URL";
+
+const statisticsCsv =
+"YOUR_STATISTICS_CSV_URL";
+
+
+/****************************
+TOTAL TOURNAMENTS
+****************************/
+
+fetch(tournamentsCsv)
+.then(r => r.text())
+.then(csv => {
+
+    const rows = csv.trim().split("\n");
+
+    rows.shift();
+
+    let completedCount = 0;
+
+    let featuredTournament = null;
+
+    rows.forEach(row => {
+
+        const cols = row.split(",");
+
+        const tournament = {
+
+            id: cols[0],
+            name: cols[1],
+            date: cols[2],
+            venue: cols[3],
+            format: cols[4],
+            status: cols[5],
+            participants: cols[6],
+            champion: cols[7],
+            runnerUp: cols[8]
+
+        };
+
+        if(
+            tournament.status.toLowerCase()
+            === "completed"
+        ){
+            completedCount++;
+        }
+
+        if(
+            !featuredTournament &&
+            tournament.status.toLowerCase()
+            === "upcoming"
+        ){
+            featuredTournament = tournament;
+        }
+
+    });
+
+    document.getElementById(
+        "totalTournaments"
+    ).textContent = completedCount;
+
+
+    if(featuredTournament){
+
+        document.getElementById(
+            "featuredTournament"
+        ).innerHTML = `
+
+        <div class="featured-card">
+
+            <h2>
+                ${featuredTournament.name}
+            </h2>
+
+            <p>
+                📅 ${featuredTournament.date}
+            </p>
+
+            <p>
+                📍 ${featuredTournament.venue}
+            </p>
+
+            <p>
+                ⚔ ${featuredTournament.format}
+            </p>
+
+            <p>
+                👥 ${featuredTournament.participants} Players
+            </p>
+
+            <a href="tournaments.html"
+               class="btn-yellow">
+               VIEW DETAILS
+            </a>
+
+        </div>
+        `;
+    }
+
+});
+
+
+/****************************
+REGISTERED PLAYERS
+****************************/
+
+fetch(rankingsCsv)
+.then(r => r.text())
+.then(csv => {
+
+    const rows = csv.trim().split("\n");
+
+    rows.shift();
+
+    document.getElementById(
+        "totalPlayers"
+    ).textContent = rows.length;
+
+});
+
+
+/****************************
+MATCHES PLAYED
+****************************/
+
+fetch(statisticsCsv)
+.then(r => r.text())
+.then(csv => {
+
+    const rows = csv.trim().split("\n");
+
+    rows.shift();
+
+    let totalMatches = 0;
+
+    rows.forEach(row => {
+
+        const cols = row.split(",");
+
+        totalMatches +=
+            Number(cols[1]) || 0;
+
+    });
+
+    document.getElementById(
+        "totalMatches"
+    ).textContent = totalMatches;
+
+});
+
+</script>
 
 </body>
 </html>
