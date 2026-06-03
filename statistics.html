@@ -56,11 +56,8 @@ nav{
 }
 
 .nav-logo{
-
-    height:60px;
-
+    height:50px;
     width:auto;
-
     display:block;
 }
 
@@ -76,26 +73,42 @@ nav{
     gap:35px;
 
     align-items:center;
-}hite;
+}
+
+.nav-links a{
+
+    color:white;
     text-decoration:none;
     font-family:'Oswald',sans-serif;
+    font-size:1.1rem;
+    letter-spacing:1px;
     transition:.3s;
 }
 
 .nav-links a:hover,
 .nav-links .active{
-    color:var(--yellow);
-}
 
+    color:var(--yellow);
+
+}
 /* HERO */
 
 .hero{
+
     text-align:center;
-    padding:80px 20px;
+
+    padding:120px 20px 80px;
+
     background:
-    radial-gradient(circle at center,
-    rgba(255,209,0,.15),
-    transparent 60%);
+    radial-gradient(
+        circle at center,
+        rgba(255,209,0,.12),
+        transparent 60%
+    );
+
+    border-bottom:
+    1px solid rgba(255,209,0,.15);
+
 }
 
 .hero h1{
@@ -132,10 +145,30 @@ nav{
 }
 
 .stat-card{
-    background:var(--card);
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(255,209,0,.08),
+        rgba(0,0,0,.85)
+    );
+
     border:2px solid var(--yellow);
+
     padding:25px;
+
     text-align:center;
+
+    transition:.3s;
+}
+
+.stat-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:
+    0 0 25px rgba(255,209,0,.25);
+
 }
 
 .stat-card h3{
@@ -157,9 +190,26 @@ nav{
 }
 
 .chart-card{
-    background:var(--card);
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(255,209,0,.05),
+        rgba(0,0,0,.85)
+    );
+
     border:2px solid var(--yellow);
+
     padding:20px;
+
+    transition:.3s;
+}
+
+.chart-card:hover{
+
+    box-shadow:
+    0 0 25px rgba(255,209,0,.25);
+
 }
 
 .chart-card h3{
@@ -192,7 +242,8 @@ td{
 }
 
 tr:hover{
-    background:#111;
+    background:
+    rgba(255,209,0,.08);
 }
 
 /* FOOTER */
@@ -240,7 +291,9 @@ footer{
     <a href="index.html">HOME</a>
     <a href="tournaments.html">TOURNAMENTS</a>
     <a href="rankings.html">RANKINGS</a>
-    <a href="statistics.html">STATISTICS</a>
+    <a href="statistics.html" class="active">
+STATISTICS
+</a>
     <a href="gallery.html">GALLERY</a>
     <a href="rules.html">RULES</a>
 </div>
@@ -251,7 +304,7 @@ footer{
 
 <section class="hero">
 <h1>STATISTICS</h1>
-<p>PLAYER PERFORMANCE ANALYTICS</p>
+<p>BLADERS' PERFORMANCE ANALYTICS</p>
 </section>
 
 <section class="section">
@@ -463,15 +516,19 @@ fetch(csvUrl)
 
     const chartColor = "#FFD100";
 
+    const chartBorder = "#F4B400";
+
     new Chart(document.getElementById('pointsChart'),{
         type:'bar',
         data:{
             labels:bladers,
             datasets:[{
-                label:'Points',
-                data:points,
-                backgroundColor:chartColor
-            }]
+    label:'Points',
+    data:points,
+    backgroundColor:chartColor,
+    borderColor:chartBorder,
+    borderWidth:1
+}]
         }
     });
 
@@ -480,10 +537,12 @@ fetch(csvUrl)
         data:{
             labels:bladers,
             datasets:[{
-                label:'Win Rate %',
-                data:winRates,
-                backgroundColor:chartColor
-            }]
+    label:'Points',
+    data:points,
+    backgroundColor:chartColor,
+    borderColor:chartBorder,
+    borderWidth:1
+}]
         }
     });
 
@@ -492,14 +551,24 @@ fetch(csvUrl)
         data:{
             labels:['XF','OF','BF','SF','SO'],
             datasets:[{
-                data:[
-                    totalXF,
-                    totalOF,
-                    totalBF,
-                    totalSF,
-                    totalSO
-                ]
-            }]
+
+    data:[
+        totalXF,
+        totalOF,
+        totalBF,
+        totalSF,
+        totalSO
+    ],
+
+    backgroundColor:[
+        "#FFD100",
+        "#FFC300",
+        "#FFB000",
+        "#E6C200",
+        "#CCA300"
+    ]
+
+}]
         }
     });
 
@@ -508,10 +577,12 @@ fetch(csvUrl)
         data:{
             labels:bladers,
             datasets:[{
-                label:'XF',
-                data:xf,
-                backgroundColor:chartColor
-            }]
+    label:'Points',
+    data:points,
+    backgroundColor:chartColor,
+    borderColor:chartBorder,
+    borderWidth:1
+}]
         }
     });
 
