@@ -354,30 +354,35 @@ FEATURED TOURNAMENT
 CSV URLS
 ****************************/
 
-const tournamentsCsv =
-"YOUR_TOURNAMENTS_CSV_URL";
-
-const rankingsCsv =
-"YOUR_RANKINGS_CSV_URL";
-
-const statisticsCsv =
-"YOUR_STATISTICS_CSV_URL";
-
+const tournamentsCsv = "YOUR_TOURNAMENTS_CSV_URL";
+const rankingsCsv = "YOUR_RANKINGS_CSV_URL";
+const statisticsCsv = "YOUR_STATISTICS_CSV_URL";
 
 /****************************
-TOTAL TOURNAMENTS
+HELPER
+****************************/
+
+function clean(value){
+    return (value || "")
+        .replace(/"/g,"")
+        .trim();
+}
+
+/****************************
+TOURNAMENTS + FEATURED EVENT
 ****************************/
 
 fetch(tournamentsCsv)
 .then(r => r.text())
 .then(csv => {
 
-    const rows = csv.trim().split("\n");
+    const rows = csv
+        .split(/\r?\n/)
+        .filter(row => row.trim() !== "");
 
     rows.shift();
 
     let completedCount = 0;
-
     let featuredTournament = null;
 
     rows.forEach(row => {
@@ -386,67 +391,51 @@ fetch(tournamentsCsv)
 
         const tournament = {
 
-            id: cols[0],
-            name: cols[1],
-            date: cols[2],
-            venue: cols[3],
-            format: cols[4],
-            status: cols[5],
-            participants: cols[6],
-            champion: cols[7],
-            runnerUp: cols[8]
+            id: clean(cols[0]),
+            name: clean(cols[1]),
+            date: clean(cols[2]),
+            venue: clean(cols[3]),
+            format: clean(cols[4]),
+            status: clean(cols[5]),
+            participants: clean(cols[6]),
+            champion: clean(cols[7]),
+            runnerUp: clean(cols[8])
 
         };
 
         if(
-            tournament.status.toLowerCase()
-            === "completed"
+            tournament.status.toLowerCase() === "completed"
         ){
             completedCount++;
         }
 
         if(
             !featuredTournament &&
-            tournament.status.toLowerCase()
-            === "upcoming"
+            tournament.status.toLowerCase() === "upcoming"
         ){
             featuredTournament = tournament;
         }
 
     });
 
-    document.getElementById(
-        "totalTournaments"
-    ).textContent = completedCount;
-
+    document.getElementById("totalTournaments").textContent =
+        completedCount;
 
     if(featuredTournament){
 
-        document.getElementById(
-            "featuredTournament"
-        ).innerHTML = `
+        document.getElementById("featuredTournament").innerHTML = `
 
         <div class="featured-card">
 
-            <h2>
-                ${featuredTournament.name}
-            </h2>
+            <h2>${featuredTournament.name}</h2>
 
-            <p>
-                📅 ${featuredTournament.date}
-            </p>
+            <p>📅 ${featuredTournament.date}</p>
 
-            <p>
-                📍 ${featuredTournament.venue}
-            </p>
+            <p>📍 ${featuredTournament.venue}</p>
 
-            <p>
-                ⚔ ${featuredTournament.format}
-            </p>
+            <p>⚔ ${featuredTournament.format}</p>
 
-            <p>
-                👥 ${featuredTournament.participants} Players
-            </p>
+            <p>👥 ${featuredTournament.participants} Players</p>
 
             <a href="tournaments.html"
                class="btn-yellow">
@@ -457,7 +446,8 @@ fetch(tournamentsCsv)
         `;
     }
 
-});
+})
+.catch(err => console.error("Tournament Error:", err));
 
 
 /****************************
@@ -468,15 +458,25 @@ fetch(rankingsCsv)
 .then(r => r.text())
 .then(csv => {
 
-    const rows = csv.trim().split("\n");
+    const rows = csv
+        .split(/\r?\n/)
+        .filter(row => row.trim() !== "");
 
     rows.shift();
 
-    document.getElementById(
-        "totalPlayers"
-    ).textContent = rows.length;
+    const players = rows.filter(row => {
 
-});
+        const cols = row.split(",");
+
+        return clean(cols[1]) !== "";
+
+    });
+
+    document.getElementById("totalPlayers").textContent =
+        players.length;
+
+})
+.catch(err => console.error("Rankings Error:", err));
 
 
 /****************************
@@ -487,7 +487,9 @@ fetch(statisticsCsv)
 .then(r => r.text())
 .then(csv => {
 
-    const rows = csv.trim().split("\n");
+    const rows = csv
+        .split(/\r?\n/)
+        .filter(row => row.trim() !== "");
 
     rows.shift();
 
@@ -497,18 +499,18 @@ fetch(statisticsCsv)
 
         const cols = row.split(",");
 
-        totalMatches +=
-            Number(cols[1]) || 0;
+        totalMatches += Number(clean(cols[1])) || 0;
 
     });
 
-    document.getElementById(
-        "totalMatches"
-    ).textContent = totalMatches;
+    document.getElementById("totalMatches").textContent =
+        totalMatches;
 
-});
+})
+.catch(err => console.error("Statistics Error:", err));
 
 </script>
+
 
 </body>
 </html>
