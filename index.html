@@ -3,137 +3,315 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Chennai Beyblade Association</title>
 
-<link rel="stylesheet" href="style.css">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background:#0f0f0f;
+    color:white;
+    line-height:1.6;
+}
+
+header{
+    background:#000;
+    border-bottom:3px solid #FFD700;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.navbar{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 20px;
+}
+
+.logo-small{
+    height:50px;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+    font-weight:bold;
+}
+
+.nav-links a:hover{
+    color:#FFD700;
+}
+
+.hero{
+    text-align:center;
+    padding:80px 20px;
+}
+
+.hero-logo{
+    width:220px;
+    max-width:80%;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    color:#FFD700;
+    font-size:3rem;
+    margin-bottom:10px;
+}
+
+.hero p{
+    font-size:1.2rem;
+    color:#ddd;
+}
+
+.buttons{
+    margin-top:30px;
+}
+
+.btn{
+    display:inline-block;
+    padding:12px 24px;
+    margin:10px;
+    background:#FFD700;
+    color:#000;
+    text-decoration:none;
+    font-weight:bold;
+    border-radius:8px;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+section{
+    max-width:1200px;
+    margin:auto;
+    padding:50px 20px;
+}
+
+.section-title{
+    color:#FFD700;
+    text-align:center;
+    margin-bottom:30px;
+    font-size:2rem;
+}
+
+.card{
+    background:#1a1a1a;
+    border:1px solid #333;
+    border-left:5px solid #FFD700;
+    padding:25px;
+    border-radius:10px;
+}
+
+.tournament-card{
+    text-align:center;
+}
+
+.rankings{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:15px;
+}
+
+.player{
+    background:#1a1a1a;
+    padding:15px;
+    border-radius:8px;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+}
+
+.stat-box{
+    background:#1a1a1a;
+    text-align:center;
+    padding:25px;
+    border-radius:10px;
+}
+
+.stat-box h3{
+    color:#FFD700;
+    font-size:2rem;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:15px;
+}
+
+.gallery img{
+    width:100%;
+    border-radius:10px;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    background:#000;
+    border-top:3px solid #FFD700;
+}
+
+@media(max-width:768px){
+
+.navbar{
+    flex-direction:column;
+}
+
+.nav-links{
+    margin-top:10px;
+}
+
+.hero h1{
+    font-size:2rem;
+}
+}
+</style>
 </head>
 
 <body>
 
-<nav>
-    <div class="logo">
-        <img src="assets/cba-logo.jpg" alt="CBA">
-    </div>
+<header>
+    <div class="navbar">
+        <img src="cba-logo.png" alt="CBA Logo" class="logo-small">
 
-    <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Tournaments</a></li>
-        <li><a href="#">Rankings</a></li>
-        <li><a href="#">Statistics</a></li>
-        <li><a href="#">Gallery</a></li>
-        <li><a href="#">Rules</a></li>
-    </ul>
-</nav>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Tournaments</a>
+            <a href="#">Rankings</a>
+            <a href="#">Statistics</a>
+            <a href="#">Gallery</a>
+            <a href="#">Rules</a>
+        </div>
+    </div>
+</header>
 
 <section class="hero">
 
-    <img src="assets/cba-logo.jpg" class="hero-logo">
+    <img src="cba-logo.png" alt="CBA Logo" class="hero-logo">
 
     <h1>CHENNAI BEYBLADE ASSOCIATION</h1>
 
     <p>
-        Building the Beyblade X Community in Chennai
+        Official Beyblade X Community of Chennai
     </p>
 
     <div class="buttons">
+        <a href="#" class="btn">Register for Tournament</a>
+        <a href="#" class="btn">View Rankings</a>
+    </div>
 
-        <a href="#" class="btn-primary">
-            REGISTER FOR NEXT TOURNAMENT
-        </a>
+</section>
 
-        <a href="#" class="btn-secondary">
-            VIEW RANKINGS
-        </a>
+<section>
+
+    <h2 class="section-title">Upcoming Tournament</h2>
+
+    <div class="card tournament-card">
+
+        <h3>The Next Event</h3>
+
+        <br>
+
+        <p>Date: Coming Soon</p>
+        <p>Venue: Chennai</p>
+        <p>Format: Swiss + Knockout</p>
+
+        <br>
+
+        <a href="#" class="btn">Register Now</a>
 
     </div>
 
 </section>
 
-<section class="cards">
+<section>
 
-<div class="card">
+    <h2 class="section-title">Latest Tournament Results</h2>
 
-    <h2>NEXT TOURNAMENT</h2>
+    <div class="card">
 
-    <h3>The Next Event</h3>
+        <h3>The New Dawn</h3>
 
-    <p>Date: Coming Soon</p>
-    <p>Venue: Chennai</p>
-    <p>Format: Swiss + Knockout</p>
+        <br>
 
-</div>
+        <p>🥇 Champion - TBD</p>
+        <p>🥈 Runner-up - TBD</p>
+        <p>🥉 Third Place - TBD</p>
 
-<div class="card">
-
-    <h2>LATEST TOURNAMENT</h2>
-
-    <h3>The New Dawn</h3>
-
-    <p>🥇 Champion - Vettri</p>
-    <p>🥈 Runner-Up - Vishnu</p>
-    <p>🥉 Third Place - Arjun</p>
-
-</div>
-
-<div class="card">
-
-    <h2>TOP 5 BLADERS</h2>
-
-    <ol>
-        <li>Vettri</li>
-        <li>Vishnu</li>
-        <li>Arjun</li>
-        <li>Pranav</li>
-        <li>Sarvesh</li>
-    </ol>
-
-</div>
+    </div>
 
 </section>
 
-<section class="stats">
+<section>
 
-    <h2>TOURNAMENT STATS</h2>
+    <h2 class="section-title">Top Ranked Bladers</h2>
 
-    <div class="stats-grid">
+    <div class="rankings">
 
-        <div class="stat">
+        <div class="player">#1 Player Name</div>
+        <div class="player">#2 Player Name</div>
+        <div class="player">#3 Player Name</div>
+        <div class="player">#4 Player Name</div>
+        <div class="player">#5 Player Name</div>
+
+    </div>
+
+</section>
+
+<section>
+
+    <h2 class="section-title">Tournament Statistics</h2>
+
+    <div class="stats">
+
+        <div class="stat-box">
             <h3>16</h3>
             <p>Players</p>
         </div>
 
-        <div class="stat">
+        <div class="stat-box">
             <h3>48</h3>
             <p>Matches</p>
         </div>
 
-        <div class="stat">
+        <div class="stat-box">
             <h3>32</h3>
             <p>Unique Combos</p>
         </div>
 
-        <div class="stat">
-            <h3>60%</h3>
-            <p>Attack Wins</p>
+        <div class="stat-box">
+            <h3>1</h3>
+            <p>Tournament Hosted</p>
         </div>
 
     </div>
 
 </section>
 
-<section class="gallery">
+<section>
 
-    <h2>GALLERY HIGHLIGHTS</h2>
+    <h2 class="section-title">Gallery</h2>
 
-    <div class="gallery-grid">
+    <div class="gallery">
 
-        <img src="assets/gallery1.jpg">
-        <img src="assets/gallery2.jpg">
-        <img src="assets/gallery3.jpg">
-        <img src="assets/gallery4.jpg">
+        <img src="gallery1.jpg" alt="">
+        <img src="gallery2.jpg" alt="">
+        <img src="gallery3.jpg" alt="">
+        <img src="gallery4.jpg" alt="">
 
     </div>
 
@@ -141,13 +319,17 @@
 
 <footer>
 
-    <h3>CHENNAI BEYBLADE ASSOCIATION</h3>
+    <h3>Chennai Beyblade Association</h3>
 
-    <p>Official Beyblade X Community of Chennai</p>
+    <p>Building the Beyblade X competitive scene in Chennai.</p>
 
-    <p>
-        © 2026 Chennai Beyblade Association
-    </p>
+    <br>
+
+    <p>Instagram | WhatsApp Community</p>
+
+    <br>
+
+    <p>© 2026 Chennai Beyblade Association</p>
 
 </footer>
 
