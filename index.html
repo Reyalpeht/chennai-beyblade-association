@@ -62,7 +62,7 @@ nav{
 
 .nav-logo{
 
-    height:60px;
+    height:50px;
 
     width:auto;
 
@@ -222,9 +222,9 @@ nav{
 /* TOURNAMENT */
 
 .featured{
-    max-width:1300px;
+    max-width:1400px;
     margin:auto;
-    padding:50px 20px;
+    padding:60px 20px;
 }
 
 .section-title{
@@ -234,14 +234,33 @@ nav{
 }
 
 .featured-card{
+
     border:2px solid var(--yellow);
+
     padding:50px;
-    background:#090909;
+
+    background:
+    linear-gradient(
+    135deg,
+    rgba(255,209,0,.08),
+    rgba(0,0,0,.85));
+
+    transition:.3s;
+}
+
+.featured-card:hover{
+
+    box-shadow:
+    0 0 30px rgba(255,209,0,.25);
+
 }
 
 .featured-card h2{
     font-size:4rem;
     margin-bottom:20px;
+    color:var(--yellow);
+    font-family:'Oswald',sans-serif;
+    letter-spacing:2px;
 }
 
 .featured-card p{
@@ -471,22 +490,22 @@ fetch(tournamentsCsv)
 
         <div class="featured-card">
 
-            <h2>${featuredTournament.name}</h2>
+    <h2>${featuredTournament.name}</h2>
 
-            <p>📅 ${featuredTournament.date}</p>
+    <p><strong>📅 Date:</strong> ${featuredTournament.date}</p>
 
-            <p>📍 ${featuredTournament.venue}</p>
+    <p><strong>📍 Venue:</strong> ${featuredTournament.venue}</p>
 
-            <p>⚔ ${featuredTournament.format}</p>
+    <p><strong>⚔ Format:</strong> ${featuredTournament.format}</p>
 
-            <p>👥 ${featuredTournament.participants} Players</p>
+    <p><strong>👥 Players:</strong> ${featuredTournament.participants}</p>
 
-            <a href="tournaments.html"
-               class="btn-yellow">
-               VIEW DETAILS
-            </a>
+    <a href="tournaments.html"
+       class="btn-yellow">
+       VIEW TOURNAMENT
+    </a>
 
-        </div>
+</div>
         `;
     }
 
