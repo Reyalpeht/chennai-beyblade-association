@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tournaments | Chennai Beyblade Association</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --yellow:#FFD100;
+    --yellow-dark:#F4B400;
+    --black:#050505;
+    --card:#0d0d0d;
+    --white:#ffffff;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#050505;
+    color:white;
+    font-family:'Rajdhani',sans-serif;
+    overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:999;
+    background:rgba(0,0,0,0.95);
+    backdrop-filter:blur(10px);
+    border-bottom:2px solid var(--yellow);
+}
+
+.nav-container{
+    max-width:1400px;
+    margin:auto;
+    padding:20px;
+}
+
+.nav-links{
+    display:flex;
+    justify-content:center;
+    gap:50px;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    font-family:'Oswald',sans-serif;
+    font-size:1.1rem;
+    letter-spacing:1px;
+    transition:.3s;
+}
+
+.nav-links a:hover,
+.nav-links .active{
+    color:var(--yellow);
+}
+
+/* HERO */
+
+.hero{
+
+    background:
+    linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),
+    radial-gradient(circle at center,
+    rgba(255,209,0,.15),
+    transparent 60%);
+
+    padding:80px 20px;
+    text-align:center;
+}
+
+.hero h1{
+    font-family:'Oswald',sans-serif;
+    font-size:5rem;
+    color:var(--yellow);
+    letter-spacing:4px;
+}
+
+.hero p{
+    font-size:1.4rem;
+    letter-spacing:5px;
+}
+
+/* SECTION */
+
+.section{
+    max-width:1400px;
+    margin:auto;
+    padding:50px 20px;
+}
+
+.section-title{
+    color:var(--yellow);
+    font-family:'Oswald',sans-serif;
+    font-size:2rem;
+    margin-bottom:25px;
+}
+
+/* FEATURED */
+
+.featured-card{
+
+    border:2px solid var(--yellow);
+
+    background:
+    linear-gradient(
+    135deg,
+    rgba(255,209,0,.08),
+    rgba(0,0,0,.8));
+
+    padding:40px;
+
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:30px;
+}
+
+.featured-name{
+    font-size:4rem;
+    font-family:'Oswald',sans-serif;
+    color:var(--yellow);
+}
+
+.featured-meta{
+    margin-top:20px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.meta-box{
+    border:1px solid rgba(255,209,0,.3);
+    padding:15px;
+}
+
+/* TOURNAMENT GRID */
+
+.grid{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
+}
+
+.card{
+
+    background:var(--card);
+
+    border:2px solid var(--yellow);
+
+    padding:25px;
+
+    transition:.3s;
+}
+
+.card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:
+    0 0 25px rgba(255,209,0,.35);
+
+}
+
+.card h3{
+    color:var(--yellow);
+    font-size:2rem;
+    margin-bottom:15px;
+    font-family:'Oswald',sans-serif;
+}
+
+.card p{
+    margin:8px 0;
+}
+
+.badge{
+
+    display:inline-block;
+
+    padding:6px 12px;
+
+    margin-top:15px;
+
+    font-weight:bold;
+}
+
+.upcoming{
+    background:#145c1a;
+}
+
+.completed{
+    background:#333;
+}
+
+.champion{
+    color:#FFD700;
+    font-weight:bold;
+}
+
+.runner{
+    color:#C0C0C0;
+    font-weight:bold;
+}
+
+/* FOOTER */
+
+footer{
+    margin-top:80px;
+    border-top:2px solid var(--yellow);
+    text-align:center;
+    padding:30px;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.hero h1{
+    font-size:3rem;
+}
+
+.featured-card{
+    grid-template-columns:1fr;
+}
+
+.nav-links{
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.featured-name{
+    font-size:2.5rem;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="nav-container">
+
+<div class="nav-links">
+<a href="index.html">HOME</a>
+<a href="tournaments.html" class="active">TOURNAMENTS</a>
+<a href="rankings.html">RANKINGS</a>
+<a href="statistics.html">STATISTICS</a>
+<a href="gallery.html">GALLERY</a>
+<a href="rules.html">RULES</a>
+</div>
+
+</div>
+</nav>
+
+<section class="hero">
+
+<h1>TOURNAMENTS</h1>
+
+<p>PAST • PRESENT • FUTURE</p>
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title">
+🔥 FEATURED EVENT
+</h2>
+
+<div id="featured"></div>
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title">
+⚡ UPCOMING TOURNAMENTS
+</h2>
+
+<div class="grid" id="upcoming"></div>
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title">
+🏆 PAST TOURNAMENTS
+</h2>
+
+<div class="grid" id="completed"></div>
+
+</section>
+
+<footer>
+
+<p>© Chennai Beyblade Association</p>
+
+</footer>
+
+<script>
+
+const csvUrl = "YOUR_CSV_URL_HERE";
+
+fetch(csvUrl)
+.then(response => response.text())
+.then(csv => {
+
+    const rows = csv.trim().split("\n");
+
+    rows.shift();
+
+    let featuredCreated = false;
+
+    rows.forEach(row => {
+
+        const cols = row.split(",");
+
+        const t = {
+
+            id: cols[0],
+            name: cols[1],
+            date: cols[2],
+            venue: cols[3],
+            format: cols[4],
+            status: cols[5],
+            participants: cols[6],
+            champion: cols[7],
+            runnerUp: cols[8]
+
+        };
+
+        if(
+            !featuredCreated &&
+            t.status.toLowerCase() === "upcoming"
+        ){
+
+            document.getElementById("featured").innerHTML = `
+
+            <div class="featured-card">
+
+                <div>
+
+                    <div class="featured-name">
+                        ${t.name}
+                    </div>
+
+                    <div class="featured-meta">
+
+                        <div class="meta-box">
+                            📅 ${t.date}
+                        </div>
+
+                        <div class="meta-box">
+                            📍 ${t.venue}
+                        </div>
+
+                        <div class="meta-box">
+                            ⚔ ${t.format}
+                        </div>
+
+                        <div class="meta-box">
+                            👥 ${t.participants} Players
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            `;
+
+            featuredCreated = true;
+        }
+
+        const card = `
+
+        <div class="card">
+
+            <h3>${t.name}</h3>
+
+            <p><strong>Date:</strong> ${t.date}</p>
+            <p><strong>Venue:</strong> ${t.venue}</p>
+            <p><strong>Format:</strong> ${t.format}</p>
+            <p><strong>Players:</strong> ${t.participants}</p>
+
+            ${
+            t.status.toLowerCase()==="completed"
+            ?
+            `
+            <p class="champion">
+            🏆 Champion: ${t.champion}
+            </p>
+
+            <p class="runner">
+            🥈 Runner-Up: ${t.runnerUp}
+            </p>
+            `
+            :
+            ""
+            }
+
+            <div class="badge ${t.status.toLowerCase()}">
+            ${t.status}
+            </div>
+
+        </div>
+        `;
+
+        if(t.status.toLowerCase()==="upcoming"){
+
+            document
+            .getElementById("upcoming")
+            .innerHTML += card;
+
+        }else{
+
+            document
+            .getElementById("completed")
+            .innerHTML += card;
+
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
