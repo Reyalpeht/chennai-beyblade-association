@@ -1,0 +1,387 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Rules | Chennai Beyblade Association</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --yellow:#FFD100;
+    --black:#050505;
+    --card:#0d0d0d;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#050505;
+    color:white;
+    font-family:'Rajdhani',sans-serif;
+    overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:999;
+    background:rgba(0,0,0,.95);
+    backdrop-filter:blur(10px);
+    border-bottom:2px solid var(--yellow);
+}
+
+.nav-container{
+    max-width:1400px;
+    margin:auto;
+    padding:12px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.nav-logo{
+    height:50px;
+    width:auto;
+    display:block;
+}
+
+.logo-link{
+    display:flex;
+    align-items:center;
+}
+
+.nav-links{
+    display:flex;
+    gap:35px;
+    align-items:center;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    font-family:'Oswald',sans-serif;
+    font-size:1.1rem;
+    letter-spacing:1px;
+    transition:.3s;
+}
+
+.nav-links a:hover,
+.nav-links .active{
+    color:var(--yellow);
+}
+
+/* HERO */
+
+.hero{
+
+    background:
+    radial-gradient(
+        circle at center,
+        rgba(255,209,0,.12),
+        transparent 60%
+    );
+
+    padding:120px 20px 80px;
+
+    text-align:center;
+
+    border-bottom:
+    1px solid rgba(255,209,0,.15);
+
+}
+
+.hero h1{
+    font-family:'Oswald',sans-serif;
+    font-size:5rem;
+    color:var(--yellow);
+    letter-spacing:4px;
+}
+
+.hero p{
+    font-size:1.3rem;
+    letter-spacing:4px;
+}
+
+/* CONTENT */
+
+.section{
+    max-width:1200px;
+    margin:auto;
+    padding:50px 20px;
+}
+
+.rule-card{
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(255,209,0,.05),
+        rgba(0,0,0,.85)
+    );
+
+    border:2px solid var(--yellow);
+
+    padding:35px;
+
+    margin-bottom:30px;
+
+    transition:.3s;
+}
+
+.rule-card:hover{
+
+    box-shadow:
+    0 0 25px rgba(255,209,0,.25);
+
+}
+
+.rule-card h2{
+    color:var(--yellow);
+    font-family:'Oswald',sans-serif;
+    font-size:2rem;
+    margin-bottom:20px;
+}
+
+.rule-card ul{
+    list-style:none;
+}
+
+.rule-card li{
+    margin-bottom:15px;
+    font-size:1.1rem;
+}
+
+/* TABLE */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+th{
+    background:var(--yellow);
+    color:black;
+    padding:15px;
+}
+
+td{
+    padding:15px;
+    text-align:center;
+    border:1px solid rgba(255,209,0,.3);
+}
+
+tr:hover{
+    background:rgba(255,209,0,.08);
+}
+
+/* FOOTER */
+
+footer{
+    margin-top:80px;
+    border-top:2px solid var(--yellow);
+    text-align:center;
+    padding:30px;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.hero h1{
+    font-size:3rem;
+}
+
+.nav-links{
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+
+<div class="nav-container">
+
+<a href="index.html" class="logo-link">
+    <img src="cba-logo.png"
+         alt="CBA Logo"
+         class="nav-logo">
+</a>
+
+<div class="nav-links">
+    <a href="index.html">HOME</a>
+    <a href="tournaments.html">TOURNAMENTS</a>
+    <a href="rankings.html">RANKINGS</a>
+    <a href="statistics.html">STATISTICS</a>
+    <a href="gallery.html">GALLERY</a>
+    <a href="rules.html" class="active">RULES</a>
+</div>
+
+</div>
+
+</nav>
+
+<section class="hero">
+
+<h1>RULES</h1>
+
+<p>
+OFFICIAL CHENNAI BEYBLADE ASSOCIATION RULEBOOK
+</p>
+
+</section>
+
+<section class="section">
+
+<div class="rule-card">
+
+<h2>🏆 DECK RULES (3 vs 3)</h2>
+
+<ul>
+
+<li>• Each player must prepare a fixed deck of 3 Beyblade X combinations.</li>
+
+<li>• Blades, Ratchets and Bits may be changed between matches.</li>
+
+<li>• No repeating parts across the deck (Blade / Ratchet / Bit).</li>
+
+<li>• Deck must be submitted to the referee before the match.</li>
+
+<li>• During reshuffle, players may shuffle their Beyblades and return them to the referee before play resumes.</li>
+
+</ul>
+
+</div>
+
+<div class="rule-card">
+
+<h2>⚔ MATCH RULES</h2>
+
+<ul>
+
+<li>• Match continues until a player reaches 7 total points.</li>
+
+<li>• Players choose one Beyblade from their deck for each round.</li>
+
+<li>• Once used, a Beyblade cannot be reused until all 3 Beyblades are used.</li>
+
+<li>• After all 3 Beyblades are used, the deck resets.</li>
+
+</ul>
+
+</div>
+
+<div class="rule-card">
+
+<h2>🎯 SCORING SYSTEM</h2>
+
+<table>
+
+<tr>
+<th>Finish Type</th>
+<th>Points</th>
+</tr>
+
+<tr>
+<td>Spin Finish</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td>Over Finish</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td>Burst Finish</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td>Xtreme Finish</td>
+<td>3</td>
+</tr>
+
+<tr>
+<td>Stadium Out</td>
+<td>1</td>
+</tr>
+
+</table>
+
+</div>
+
+<div class="rule-card">
+
+<h2>🚫 ILLEGAL PLAYS</h2>
+
+<ul>
+
+<li>• Launching before referee call.</li>
+
+<li>• Touching stadium during battle.</li>
+
+<li>• Touching Beyblade during battle.</li>
+
+<li>• Stadium tampering.</li>
+
+<li>• Unsportsmanlike conduct.</li>
+
+</ul>
+
+<br>
+
+<h3 style="color:#FFD100;">
+Referee decision is final.
+</h3>
+
+</div>
+
+<div class="rule-card">
+
+<h2>📌 GENERAL RULES</h2>
+
+<ul>
+
+<li>• Official Beyblade X stadium only.</li>
+
+<li>• Official Takara Tomy & Hasbro Beyblade X parts only.</li>
+
+<li>• Modifications are not allowed during the match.</li>
+
+<li>• Judges may inspect decks at any time.</li>
+
+</ul>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>
+© Chennai Beyblade Association
+</p>
+
+</footer>
+
+</body>
+</html>
+```
