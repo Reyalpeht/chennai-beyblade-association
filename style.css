@@ -146,19 +146,6 @@ nav a:hover{
     letter-spacing:2px;
 }
 
-.hero{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:#000;
-}
-
-.hero-logo{
-    width:700px;
-    max-width:90%;
-}
-
 /* MOBILE */
 
 @media(max-width:900px){
