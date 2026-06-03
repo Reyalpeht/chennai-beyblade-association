@@ -526,21 +526,25 @@ fetch(csvUrl)
         `;
 
         if(
-    t.status.toLowerCase()==="upcoming" &&
+    t.status.toLowerCase() === "upcoming" &&
     t.name !== featuredTournamentName
 ){
 
-            document
-            .getElementById("upcoming")
-            .innerHTML += card;
+    document
+    .getElementById("upcoming")
+    .innerHTML += card;
 
-        }else{
+}
 
-            document
-            .getElementById("completed")
-            .innerHTML += card;
+if(
+    t.status.toLowerCase() === "completed"
+){
 
-        }
+    document
+    .getElementById("completed")
+    .innerHTML += card;
+
+}
 
     });
 
