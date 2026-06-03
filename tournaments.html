@@ -43,15 +43,41 @@ nav{
 }
 
 .nav-container{
+
     max-width:1400px;
+
     margin:auto;
-    padding:20px;
+
+    padding:12px 20px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+}
+
+.nav-logo{
+
+    height:60px;
+
+    width:auto;
+
+    display:block;
+}
+
+.logo-link{
+    display:flex;
+    align-items:center;
 }
 
 .nav-links{
+
     display:flex;
-    justify-content:center;
-    gap:50px;
+
+    gap:35px;
+
+    align-items:center;
 }
 
 .nav-links a{
@@ -253,18 +279,24 @@ footer{
 <body>
 
 <nav>
+
 <div class="nav-container">
 
+<a href="index.html" class="logo-link">
+    <img src="logo.png" alt="CBA Logo" class="nav-logo">
+</a>
+
 <div class="nav-links">
-<a href="index.html">HOME</a>
-<a href="tournaments.html" class="active">TOURNAMENTS</a>
-<a href="rankings.html">RANKINGS</a>
-<a href="statistics.html">STATISTICS</a>
-<a href="gallery.html">GALLERY</a>
-<a href="rules.html">RULES</a>
+    <a href="index.html">HOME</a>
+    <a href="tournaments.html">TOURNAMENTS</a>
+    <a href="rankings.html">RANKINGS</a>
+    <a href="statistics.html">STATISTICS</a>
+    <a href="gallery.html">GALLERY</a>
+    <a href="rules.html">RULES</a>
 </div>
 
 </div>
+
 </nav>
 
 <section class="hero">
