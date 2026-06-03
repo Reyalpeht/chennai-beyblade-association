@@ -58,11 +58,8 @@ nav{
 }
 
 .nav-logo{
-
-    height:60px;
-
+    height:50px;
     width:auto;
-
     display:block;
 }
 
@@ -94,18 +91,52 @@ nav{
     color:var(--yellow);
 }
 
+.btn-yellow{
+
+    display:inline-block;
+
+    margin-top:25px;
+
+    background:var(--yellow);
+
+    color:black;
+
+    padding:15px 30px;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.btn-yellow:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+    0 0 25px rgba(255,209,0,.35);
+
+}
+
 /* HERO */
 
 .hero{
 
     background:
-    linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),
-    radial-gradient(circle at center,
-    rgba(255,209,0,.15),
-    transparent 60%);
+    radial-gradient(
+        circle at center,
+        rgba(255,209,0,.12),
+        transparent 60%
+    );
 
-    padding:80px 20px;
+    padding:120px 20px 80px;
+
     text-align:center;
+
+    border-bottom:
+    1px solid rgba(255,209,0,.15);
+
 }
 
 .hero h1{
@@ -143,21 +174,41 @@ nav{
 
     background:
     linear-gradient(
-    135deg,
-    rgba(255,209,0,.08),
-    rgba(0,0,0,.8));
+        135deg,
+        rgba(255,209,0,.10),
+        rgba(0,0,0,.85)
+    );
 
-    padding:40px;
+    padding:50px;
 
     display:grid;
+
     grid-template-columns:2fr 1fr;
+
     gap:30px;
+
+    transition:.3s;
+}
+
+.featured-card:hover{
+
+    box-shadow:
+    0 0 30px rgba(255,209,0,.25);
+
 }
 
 .featured-name{
+
     font-size:4rem;
+
     font-family:'Oswald',sans-serif;
+
     color:var(--yellow);
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
 }
 
 .featured-meta{
@@ -183,7 +234,12 @@ nav{
 
 .card{
 
-    background:var(--card);
+    background:
+    linear-gradient(
+        135deg,
+        rgba(255,209,0,.05),
+        rgba(0,0,0,.85)
+    );
 
     border:2px solid var(--yellow);
 
@@ -194,10 +250,10 @@ nav{
 
 .card:hover{
 
-    transform:translateY(-5px);
+    transform:translateY(-8px);
 
     box-shadow:
-    0 0 25px rgba(255,209,0,.35);
+    0 0 30px rgba(255,209,0,.35);
 
 }
 
@@ -232,13 +288,21 @@ nav{
 }
 
 .champion{
+
     color:#FFD700;
+
     font-weight:bold;
+
+    font-size:1.1rem;
 }
 
 .runner{
+
     color:#C0C0C0;
+
     font-weight:bold;
+
+    font-size:1.05rem;
 }
 
 /* FOOTER */
@@ -288,7 +352,9 @@ footer{
 
 <div class="nav-links">
     <a href="index.html">HOME</a>
-    <a href="tournaments.html">TOURNAMENTS</a>
+    <a href="tournaments.html" class="active">
+TOURNAMENTS
+</a>
     <a href="rankings.html">RANKINGS</a>
     <a href="statistics.html">STATISTICS</a>
     <a href="gallery.html">GALLERY</a>
@@ -356,6 +422,7 @@ fetch(csvUrl)
     rows.shift();
 
     let featuredCreated = false;
+    let featuredTournamentName = "";
 
     rows.forEach(row => {
 
@@ -382,40 +449,46 @@ fetch(csvUrl)
 
             document.getElementById("featured").innerHTML = `
 
-            <div class="featured-card">
+<div class="featured-card">
 
-                <div>
+    <div>
 
-                    <div class="featured-name">
-                        ${t.name}
-                    </div>
+        <div class="featured-name">
+            ${t.name}
+        </div>
 
-                    <div class="featured-meta">
+        <div class="featured-meta">
 
-                        <div class="meta-box">
-                            📅 ${t.date}
-                        </div>
-
-                        <div class="meta-box">
-                            📍 ${t.venue}
-                        </div>
-
-                        <div class="meta-box">
-                            ⚔ ${t.format}
-                        </div>
-
-                        <div class="meta-box">
-                            👥 ${t.participants} Players
-                        </div>
-
-                    </div>
-
-                </div>
-
+            <div class="meta-box">
+                📅 ${t.date}
             </div>
-            `;
+
+            <div class="meta-box">
+                📍 ${t.venue}
+            </div>
+
+            <div class="meta-box">
+                ⚔ ${t.format}
+            </div>
+
+            <div class="meta-box">
+                👥 ${t.participants} Players
+            </div>
+
+        </div>
+
+        <a href="tournaments.html"
+           class="btn-yellow">
+           VIEW TOURNAMENT
+        </a>
+
+    </div>
+
+</div>
+`;
 
             featuredCreated = true;
+            featuredTournamentName = t.name;
         }
 
         const card = `
@@ -452,7 +525,10 @@ fetch(csvUrl)
         </div>
         `;
 
-        if(t.status.toLowerCase()==="upcoming"){
+        if(
+    t.status.toLowerCase()==="upcoming" &&
+    t.name !== featuredTournamentName
+){
 
             document
             .getElementById("upcoming")
