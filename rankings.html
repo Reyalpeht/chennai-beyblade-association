@@ -31,10 +31,14 @@ body{
 /* NAVBAR */
 
 nav{
-    position:sticky;
+    position:fixed;
     top:0;
-    z-index:999;
-    background:rgba(0,0,0,.95);
+    width:100%;
+    z-index:1000;
+
+    background:rgba(0,0,0,0.9);
+    backdrop-filter:blur(10px);
+
     border-bottom:2px solid var(--yellow);
 }
 
@@ -77,14 +81,18 @@ nav{
 }
 
 .nav-links a{
-    text-decoration:none;
     color:white;
+    text-decoration:none;
     font-family:'Oswald',sans-serif;
+    font-size:1.1rem;
+    letter-spacing:1px;
+    transition:.3s;
 }
 
 .nav-links a:hover,
 .nav-links .active{
     color:var(--yellow);
+    text-shadow:0 0 15px var(--yellow);
 }
 
 /* HERO */
