@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gallery | Chennai Beyblade Association</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --yellow:#FFD100;
+    --black:#050505;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:var(--black);
+    color:white;
+    font-family:'Rajdhani',sans-serif;
+    overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:999;
+    background:rgba(0,0,0,.95);
+    backdrop-filter:blur(10px);
+    border-bottom:2px solid var(--yellow);
+}
+
+.nav-container{
+    max-width:1400px;
+    margin:auto;
+    padding:12px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.nav-logo{
+    height:50px;
+    width:auto;
+    display:block;
+}
+
+.logo-link{
+    display:flex;
+    align-items:center;
+}
+
+.nav-links{
+    display:flex;
+    gap:35px;
+    align-items:center;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    font-family:'Oswald',sans-serif;
+    font-size:1.1rem;
+    letter-spacing:1px;
+    transition:.3s;
+}
+
+.nav-links a:hover,
+.nav-links .active{
+    color:var(--yellow);
+}
+
+/* HERO */
+
+.hero{
+
+    background:
+    radial-gradient(
+        circle at center,
+        rgba(255,209,0,.12),
+        transparent 60%
+    );
+
+    padding:120px 20px 80px;
+
+    text-align:center;
+
+    border-bottom:
+    1px solid rgba(255,209,0,.15);
+
+}
+
+.hero h1{
+    font-family:'Oswald',sans-serif;
+    font-size:5rem;
+    color:var(--yellow);
+    letter-spacing:4px;
+}
+
+.hero p{
+    font-size:1.3rem;
+    letter-spacing:4px;
+}
+
+/* CONTENT */
+
+.section{
+    max-width:1200px;
+    margin:auto;
+    padding:80px 20px;
+}
+
+.coming-soon-card{
+
+    max-width:800px;
+
+    margin:auto;
+
+    text-align:center;
+
+    padding:60px;
+
+    border:2px solid var(--yellow);
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(255,209,0,.08),
+        rgba(0,0,0,.85)
+    );
+
+    transition:.3s;
+}
+
+.coming-soon-card:hover{
+
+    box-shadow:
+    0 0 30px rgba(255,209,0,.25);
+
+}
+
+.coming-icon{
+    font-size:5rem;
+    margin-bottom:20px;
+}
+
+.coming-soon-card h2{
+    color:var(--yellow);
+    font-family:'Oswald',sans-serif;
+    font-size:3rem;
+    margin-bottom:20px;
+}
+
+.coming-soon-card p{
+    font-size:1.2rem;
+    color:#ccc;
+    margin-bottom:30px;
+    line-height:1.6;
+}
+
+.btn-yellow{
+
+    display:inline-block;
+
+    background:var(--yellow);
+
+    color:black;
+
+    padding:15px 30px;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.btn-yellow:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+    0 0 25px rgba(255,209,0,.35);
+
+}
+
+/* FOOTER */
+
+footer{
+    margin-top:80px;
+    border-top:2px solid var(--yellow);
+    text-align:center;
+    padding:30px;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.hero h1{
+    font-size:3rem;
+}
+
+.nav-links{
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.coming-soon-card{
+    padding:40px 25px;
+}
+
+.coming-soon-card h2{
+    font-size:2.2rem;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+
+<div class="nav-container">
+
+<a href="index.html" class="logo-link">
+    <img src="cba-logo.png" alt="CBA Logo" class="nav-logo">
+</a>
+
+<div class="nav-links">
+    <a href="index.html">HOME</a>
+    <a href="tournaments.html">TOURNAMENTS</a>
+    <a href="rankings.html">RANKINGS</a>
+    <a href="statistics.html">STATISTICS</a>
+    <a href="gallery.html" class="active">GALLERY</a>
+    <a href="rules.html">RULES</a>
+</div>
+
+</div>
+
+</nav>
+
+<section class="hero">
+
+<h1>GALLERY</h1>
+
+<p>
+TOURNAMENT PHOTOS • CHAMPIONS • COMMUNITY
+</p>
+
+</section>
+
+<section class="section">
+
+<div class="coming-soon-card">
+
+<div class="coming-icon">📸</div>
+
+<h2>COMING SOON</h2>
+
+<p>
+Tournament photos, champion showcases,
+event highlights, match moments and community
+memories will be available here soon.
+</p>
+
+<a href="index.html" class="btn-yellow">
+BACK TO HOME
+</a>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>
+© Chennai Beyblade Association
+</p>
+
+</footer>
+
+</body>
+</html>
