@@ -533,18 +533,18 @@ fetch(csvUrl)
     });
 
     new Chart(document.getElementById('winRateChart'),{
-        type:'bar',
-        data:{
-            labels:bladers,
-            datasets:[{
-    label:'Points',
-    data:points,
-    backgroundColor:chartColor,
-    borderColor:chartBorder,
-    borderWidth:1
-}]
-        }
-    });
+    type:'bar',
+    data:{
+        labels:bladers,
+        datasets:[{
+            label:'Win Rate %',
+            data:winRates,
+            backgroundColor:chartColor,
+            borderColor:chartBorder,
+            borderWidth:1
+        }]
+    }
+});
 
     new Chart(document.getElementById('finishChart'),{
         type:'doughnut',
@@ -573,18 +573,18 @@ fetch(csvUrl)
     });
 
     new Chart(document.getElementById('xfChart'),{
-        type:'bar',
-        data:{
-            labels:bladers,
-            datasets:[{
-    label:'Points',
-    data:points,
-    backgroundColor:chartColor,
-    borderColor:chartBorder,
-    borderWidth:1
-}]
-        }
-    });
+    type:'bar',
+    data:{
+        labels:bladers,
+        datasets:[{
+            label:'Xtreme Finishes',
+            data:xf,
+            backgroundColor:chartColor,
+            borderColor:chartBorder,
+            borderWidth:1
+        }]
+    }
+});
 
 })
 .catch(error => {
