@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tournament | Chennai Beyblade Association</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --yellow:#FFD100;
+    --black:#050505;
+    --card:#0d0d0d;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#050505;
+    color:white;
+    font-family:'Rajdhani',sans-serif;
+}
+
+/* NAVBAR */
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:999;
+    background:rgba(0,0,0,.95);
+    border-bottom:2px solid var(--yellow);
+}
+
+.nav-container{
+    max-width:1400px;
+    margin:auto;
+    padding:12px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.nav-logo{
+    height:50px;
+    width:auto;
+    display:block;
+}
+
+.logo-link{
+    display:flex;
+    align-items:center;
+}
+
+.nav-links{
+    display:flex;
+    gap:35px;
+    align-items:center;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    font-family:'Oswald',sans-serif;
+    font-size:1.1rem;
+    letter-spacing:1px;
+    transition:.3s;
+}
+
+.nav-links a:hover,
+.nav-links .active{
+    color:var(--yellow);
+}
+
+/* HERO */
+
+.hero{
+
+    text-align:center;
+
+    padding:120px 20px 80px;
+
+    background:
+    radial-gradient(
+        circle at center,
+        rgba(255,209,0,.12),
+        transparent 60%
+    );
+
+    border-bottom:
+    1px solid rgba(255,209,0,.15);
+
+}
+
+.hero h1{
+    color:var(--yellow);
+    font-size:5rem;
+    font-family:'Oswald',sans-serif;
+}
+
+.hero-meta{
+    margin-top:25px;
+
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.meta-box{
+
+    border:1px solid var(--yellow);
+
+    padding:12px 20px;
+
+    background:
+    rgba(255,209,0,.05);
+
+}
+
+/* SECTION */
+
+.section{
+    max-width:1400px;
+    margin:auto;
+    padding:60px 20px;
+}
+
+.section-title{
+    color:var(--yellow);
+    font-family:'Oswald',sans-serif;
+    font-size:2rem;
+    margin-bottom:30px;
+}
+
+/* PODIUM */
+
+.podium{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:25px;
+}
+
+.podium-card{
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(255,209,0,.08),
+        rgba(0,0,0,.85)
+    );
+
+    border:2px solid var(--yellow);
+
+    text-align:center;
+
+    padding:35px;
+
+    transition:.3s;
+}
+
+.podium-card:hover{
+
+    box-shadow:
+    0 0 25px rgba(255,209,0,.25);
+
+}
+
+.podium-card.first{
+    border:3px solid #FFD700;
+    transform:translateY(-15px);
+}
+
+.podium-place{
+    font-size:3rem;
+}
+
+.podium-name{
+    margin-top:15px;
+    font-size:2rem;
+    font-weight:bold;
+}
+
+.podium-title{
+    color:var(--yellow);
+    margin-top:10px;
+}
+
+/* TABLE */
+
+.table-wrapper{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    background:var(--yellow);
+    color:black;
+    padding:15px;
+}
+
+td{
+    padding:12px;
+    text-align:center;
+    border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+tr:hover{
+    background:
+    rgba(255,209,0,.08);
+}
+
+/* MATCHES */
+
+.matches-grid{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
+}
+
+.match-card{
+
+    border:2px solid var(--yellow);
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(255,209,0,.05),
+        rgba(0,0,0,.85)
+    );
+
+    padding:25px;
+
+    text-align:center;
+
+    transition:.3s;
+}
+
+.match-card:hover{
+
+    box-shadow:
+    0 0 25px rgba(255,209,0,.25);
+
+}
+
+.match-type{
+    color:var(--yellow);
+    font-family:'Oswald',sans-serif;
+    font-size:1.5rem;
+    margin-bottom:20px;
+}
+
+.match-player{
+    font-size:1.5rem;
+    font-weight:bold;
+}
+
+.vs{
+    margin:15px 0;
+    color:var(--yellow);
+    font-size:1.2rem;
+}
+
+.winner{
+    margin-top:20px;
+    font-size:1.1rem;
+}
+
+.score{
+    margin-top:10px;
+    font-size:1.3rem;
+    color:var(--yellow);
+}
+
+/* FOOTER */
+
+footer{
+    margin-top:80px;
+    border-top:2px solid var(--yellow);
+    text-align:center;
+    padding:30px;
+}
+
+@media(max-width:900px){
+
+.hero h1{
+    font-size:3rem;
+}
+
+.podium{
+    grid-template-columns:1fr;
+}
+
+.podium-card.first{
+    transform:none;
+}
+
+.nav-links{
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+
+<div class="nav-container">
+
+<a href="index.html" class="logo-link">
+<img src="cba-logo.png"
+     alt="CBA Logo"
+     class="nav-logo">
+</a>
+
+<div class="nav-links">
+<a href="index.html">HOME</a>
+<a href="tournaments.html" class="active">TOURNAMENTS</a>
+<a href="rankings.html">RANKINGS</a>
+<a href="statistics.html">STATISTICS</a>
+<a href="gallery.html">GALLERY</a>
+<a href="rules.html">RULES</a>
+</div>
+
+</div>
+
+</nav>
+
+<section class="hero">
+
+<h1 id="tournamentName">
+LOADING...
+</h1>
+
+<div class="hero-meta" id="tournamentMeta">
+</div>
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title">
+🏆 PODIUM
+</h2>
+
+<div class="podium" id="podium">
+</div>
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title">
+📊 FINAL STANDINGS
+</h2>
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+<tr>
+<th>Rank</th>
+<th>Blader</th>
+<th>Wins</th>
+<th>Points</th>
+</tr>
+</thead>
+
+<tbody id="standingsTable">
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2 class="section-title">
+⚔ MATCH RESULTS
+</h2>
+
+<div class="matches-grid" id="matchesGrid">
+</div>
+
+</section>
+
+<footer>
+<p>© Chennai Beyblade Association</p>
+</footer>
+
+<script>
+
+/*********************************
+CSV URLS
+*********************************/
+
+const tournamentsCsv =
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vRnAT-fx54Sgm1C-CIyXTjIEd0ASWGafVkcvuL4FXo09oL2ONFcE3TU5MW4um4oG5indzC28v1a1cZT/pub?gid=0&single=true&output=csv";
+
+const resultsCsv =
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vRnAT-fx54Sgm1C-CIyXTjIEd0ASWGafVkcvuL4FXo09oL2ONFcE3TU5MW4um4oG5indzC28v1a1cZT/pub?gid=1140474120&single=true&output=csv";
+
+const matchesCsv =
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vRnAT-fx54Sgm1C-CIyXTjIEd0ASWGafVkcvuL4FXo09oL2ONFcE3TU5MW4um4oG5indzC28v1a1cZT/pub?gid=2024355551&single=true&output=csv";
+
+
+/*********************************
+GET TOURNAMENT ID FROM URL
+*********************************/
+
+const params =
+new URLSearchParams(
+window.location.search
+);
+
+const tournamentId =
+params.get("id");
+
+
+/*********************************
+LOAD TOURNAMENT DETAILS
+*********************************/
+
+Promise.all([
+    fetch(tournamentsCsv).then(r=>r.text()),
+    fetch(resultsCsv).then(r=>r.text()),
+    fetch(matchesCsv).then(r=>r.text())
+])
+.then(([tournamentsData,
+        resultsData,
+        matchesData]) => {
+
+    loadTournament(
+        tournamentsData,
+        resultsData,
+        matchesData
+    );
+
+})
+.catch(error => {
+
+    console.error(error);
+
+    document.getElementById(
+        "tournamentName"
+    ).textContent =
+    "TOURNAMENT NOT FOUND";
+
+});
+
+
+/*********************************
+MAIN LOADER
+*********************************/
+
+function loadTournament(
+    tournamentsData,
+    resultsData,
+    matchesData
+){
+
+    /*****************************
+    TOURNAMENT DETAILS
+    *****************************/
+
+    const tournamentRows =
+    tournamentsData
+    .trim()
+    .split("\n");
+
+    tournamentRows.shift();
+
+    let tournament = null;
+
+    tournamentRows.forEach(row => {
+
+        const cols = row.split(",");
+
+        if(cols[0] === tournamentId){
+
+            tournament = {
+
+                id: cols[0],
+                name: cols[1],
+                date: cols[2],
+                venue: cols[3],
+                format: cols[4],
+                status: cols[5],
+                participants: cols[6],
+                champion: cols[7],
+                runnerUp: cols[8],
+                thirdPlace: cols[9]
+
+            };
+
+        }
+
+    });
+
+    if(!tournament){
+
+        document.getElementById(
+            "tournamentName"
+        ).textContent =
+        "TOURNAMENT NOT FOUND";
+
+        return;
+    }
+
+    /*****************************
+    HERO
+    *****************************/
+
+    document.getElementById(
+        "tournamentName"
+    ).textContent =
+    tournament.name;
+
+    document.getElementById(
+        "tournamentMeta"
+    ).innerHTML = `
+
+        <div class="meta-box">
+            📅 ${tournament.date}
+        </div>
+
+        <div class="meta-box">
+            📍 ${tournament.venue}
+        </div>
+
+        <div class="meta-box">
+            ⚔ ${tournament.format}
+        </div>
+
+        <div class="meta-box">
+            👥 ${tournament.participants}
+            Players
+        </div>
+
+    `;
+
+    /*****************************
+    PODIUM
+    *****************************/
+
+    document.getElementById(
+        "podium"
+    ).innerHTML = `
+
+        <div class="podium-card">
+
+            <div class="podium-place">
+                🥈
+            </div>
+
+            <div class="podium-name">
+                ${tournament.runnerUp}
+            </div>
+
+            <div class="podium-title">
+                RUNNER-UP
+            </div>
+
+        </div>
+
+        <div class="podium-card first">
+
+            <div class="podium-place">
+                🥇
+            </div>
+
+            <div class="podium-name">
+                ${tournament.champion}
+            </div>
+
+            <div class="podium-title">
+                CHAMPION
+            </div>
+
+        </div>
+
+        <div class="podium-card">
+
+            <div class="podium-place">
+                🥉
+            </div>
+
+            <div class="podium-name">
+                ${tournament.thirdPlace}
+            </div>
+
+            <div class="podium-title">
+                THIRD PLACE
+            </div>
+
+        </div>
+
+    `;
+
+    /*****************************
+    STANDINGS
+    *****************************/
+
+    const resultsRows =
+    resultsData
+    .trim()
+    .split("\n");
+
+    resultsRows.shift();
+
+    let standingsHTML = "";
+
+    resultsRows.forEach(row => {
+
+        const cols = row.split(",");
+
+        if(cols[0] === tournamentId){
+
+            standingsHTML += `
+
+                <tr>
+
+                    <td>${cols[1]}</td>
+
+                    <td>${cols[2]}</td>
+
+                    <td>${cols[3]}</td>
+
+                    <td>${cols[4]}</td>
+
+                </tr>
+
+            `;
+
+        }
+
+    });
+
+    document.getElementById(
+        "standingsTable"
+    ).innerHTML =
+    standingsHTML;
+
+    /*****************************
+    MATCH RESULTS
+    *****************************/
+
+    const matchRows =
+    matchesData
+    .trim()
+    .split("\n");
+
+    matchRows.shift();
+
+    let matchesHTML = "";
+
+    matchRows.forEach(row => {
+
+        const cols = row.split(",");
+
+        if(cols[0] === tournamentId){
+
+            matchesHTML += `
+
+            <div class="match-card">
+
+                <div class="match-type">
+                    ${cols[1]}
+                </div>
+
+                <div class="match-player">
+                    ${cols[2]}
+                </div>
+
+                <div class="vs">
+                    VS
+                </div>
+
+                <div class="match-player">
+                    ${cols[3]}
+                </div>
+
+                <div class="winner">
+                    Winner:
+                    <strong>${cols[4]}</strong>
+                </div>
+
+                <div class="score">
+                    ${cols[5]}
+                </div>
+
+            </div>
+
+            `;
+
+        }
+
+    });
+
+    document.getElementById(
+        "matchesGrid"
+    ).innerHTML =
+    matchesHTML;
+
+}
+
+</script>
+
+</body>
+</html>
