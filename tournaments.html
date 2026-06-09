@@ -430,15 +430,16 @@ fetch(csvUrl)
 
         const t = {
 
-            id: cols[0],
-            name: cols[1],
-            date: cols[2],
-            venue: cols[3],
-            format: cols[4],
-            status: cols[5],
-            participants: cols[6],
-            champion: cols[7],
-            runnerUp: cols[8]
+    id: cols[0],
+    name: cols[1],
+    date: cols[2],
+    venue: cols[3],
+    format: cols[4],
+    status: cols[5],
+    participants: cols[6],
+    champion: cols[7],
+    runnerUp: cols[8],
+    thirdPlace: cols[9]
 
         };
 
@@ -477,10 +478,10 @@ fetch(csvUrl)
 
         </div>
 
-        <a href="tournaments.html"
-           class="btn-yellow">
-           VIEW TOURNAMENT
-        </a>
+        <a href="tournament.html?id=${t.id}"
+   class="btn-yellow">
+   VIEW TOURNAMENT
+</a>
 
     </div>
 
@@ -519,11 +520,18 @@ fetch(csvUrl)
             }
 
             <div class="badge ${t.status.toLowerCase()}">
-            ${t.status}
-            </div>
+${t.status}
+</div>
 
-        </div>
-        `;
+<br>
+
+<a href="tournament.html?id=${t.id}"
+   class="btn-yellow">
+   VIEW TOURNAMENT
+</a>
+
+</div>
+`;
 
         if(
     t.status.toLowerCase() === "upcoming" &&
