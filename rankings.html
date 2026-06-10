@@ -348,7 +348,12 @@ fetch(csvUrl)
         }
 
         tableHTML += `
-<tr ${rank <= 3 ? 'style="font-weight:bold;"' : ''}>
+<tr <tr ${
+  rank == 1 ? 'style="font-weight:bold; color:#FFD100;"' :
+  rank == 2 ? 'style="font-weight:bold; color:#C0C0C0;"' :
+  rank == 3 ? 'style="font-weight:bold; color:#CD7F32;"' :
+  ''
+}>>
     <td>${rank}</td>
     <td>${blader}</td>
     <td>${points}</td>
