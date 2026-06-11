@@ -471,8 +471,8 @@ fetch(csvUrl)
         totalSF += sfCount;
         totalSO += soCount;
 
-        iif(seasonPoints > topPoints.value)
-            topPoints = {name:blader,value:pointsCount};
+        if(seasonPoints > topPoints.value)
+            topPoints = {name:blader,value:seasonPoints};
 
         if(winsCount > topWins.value)
             topWins = {name:blader,value:winsCount};
