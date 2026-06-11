@@ -520,7 +520,13 @@ fetch(csvUrl)
    class="btn-yellow">
    VIEW TOURNAMENT
 </a>
-
+${t.registrationLink ? `
+<a href="${t.registrationLink}"
+   target="_blank"
+   class="btn-outline"
+   style="margin-left:15px;">
+   REGISTER
+</a>
     </div>
 
 </div>
@@ -569,13 +575,6 @@ ${t.status}
 <a href="tournament.html?id=${t.id}"
    class="btn-yellow">
    VIEW TOURNAMENT
-</a>
-${t.registrationLink ? 
-<a href="${t.registrationLink}"
-   target="_blank"
-   class="btn-outline"
-   style="margin-left:15px;">
-   REGISTER
 </a>
 
 </div>
