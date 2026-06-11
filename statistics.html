@@ -438,24 +438,23 @@ fetch(csvUrl)
 
     rows.forEach(row => {
 
-        const cols = row.split(",");
-
         const blader = cols[0];
+
         const matchesPlayed = Number(cols[1]);
         const winsCount = Number(cols[2]);
-        const pointsCount = Number(cols[3]);
+        
+        const matchPoints = Number(cols[3]);
         const winMargin = Number(cols[4]);
-
-        const xfCount = Number(cols[5]);
-        const ofCount = Number(cols[6]);
-        const bfCount = Number(cols[7]);
-        const sfCount = Number(cols[8]);
-        const soCount = Number(cols[9]);
-
-        const winRate =
-            matchesPlayed > 0
-            ? ((winsCount/matchesPlayed)*100)
-            : 0;
+        
+        const winRate = Number(cols[5]);
+        
+        const seasonPoints = Number(cols[6]);
+        
+        const xfCount = Number(cols[7]);
+        const ofCount = Number(cols[8]);
+        const bfCount = Number(cols[9]);
+        const sfCount = Number(cols[10]);
+        const soCount = Number(cols[11]);
 
         bladers.push(blader);
         matches.push(matchesPlayed);
@@ -482,20 +481,22 @@ fetch(csvUrl)
         if(winRate > topWinRate.value)
             topWinRate = {name:blader,value:winRate};
 
-        tableHTML += `
-        <tr>
-            <td>${blader}</td>
-            <td>${matchesPlayed}</td>
-            <td>${winsCount}</td>
-            <td>${pointsCount}</td>
-            <td>${winMargin}</td>
-            <td>${xfCount}</td>
-            <td>${ofCount}</td>
-            <td>${bfCount}</td>
-            <td>${sfCount}</td>
-            <td>${soCount}</td>
-        </tr>
-        `;
+       tableHTML += `
+<tr>
+    <td>${blader}</td>
+    <td>${matchesPlayed}</td>
+    <td>${winsCount}</td>
+    <td>${matchPoints}</td>
+    <td>${winMargin}</td>
+    <td>${winRate}%</td>
+    <td>${seasonPoints}</td>
+    <td>${xfCount}</td>
+    <td>${ofCount}</td>
+    <td>${bfCount}</td>
+    <td>${sfCount}</td>
+    <td>${soCount}</td>
+</tr>
+`;
     });
 
     document.getElementById("statsTable").innerHTML = tableHTML;
@@ -512,9 +513,10 @@ fetch(csvUrl)
     document.getElementById("marginLeader").innerHTML =
         `${topMargin.name}<br>${topMargin.value}`;
 
-    const winRates =
-        wins.map((w,i)=>
-        ((w/matches[i])*100).toFixed(1));
+    const winRates = rows.map(row => {
+    const cols = row.split(",");
+    return Number(cols[5]);
+});
 
     const chartColor = "#FFD100";
 
