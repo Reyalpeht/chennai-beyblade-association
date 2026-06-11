@@ -438,6 +438,8 @@ fetch(csvUrl)
 
     rows.forEach(row => {
 
+        const cols = row.split(",");
+
         const blader = cols[0];
 
         const matchesPlayed = Number(cols[1]);
