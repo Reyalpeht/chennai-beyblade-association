@@ -119,6 +119,34 @@ nav{
 
 }
 
+.btn-outline{
+
+    display:inline-block;
+
+    padding:15px 30px;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    color:var(--yellow);
+
+    border:2px solid var(--yellow);
+
+    transition:.3s;
+}
+
+.btn-outline:hover{
+
+    background:var(--yellow);
+
+    color:black;
+
+    box-shadow:
+    0 0 25px rgba(255,209,0,.35);
+
+}
+
 /* HERO */
 
 .hero{
@@ -449,7 +477,7 @@ fetch(csvUrl)
     champion: cols[7],
     runnerUp: cols[8],
     thirdPlace: cols[9],
-    registrationlink: cols[10]
+    registrationLink: cols[10]
 
         };
 
@@ -491,12 +519,6 @@ fetch(csvUrl)
         <a href="tournament.html?id=${t.id}"
    class="btn-yellow">
    VIEW TOURNAMENT
-</a>
-<a href="${t.registrationlink}"
-   target="_blank"
-   class="btn-outline"
-   style="margin-left:15px;">
-   REGISTER
 </a>
 
     </div>
@@ -548,7 +570,8 @@ ${t.status}
    class="btn-yellow">
    VIEW TOURNAMENT
 </a>
-<a href="${t.registrationlink}"
+${t.registrationlink ? 
+<a href="${t.registrationLink}"
    target="_blank"
    class="btn-outline"
    style="margin-left:15px;">
