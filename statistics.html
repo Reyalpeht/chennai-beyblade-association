@@ -519,8 +519,13 @@ fetch(csvUrl)
         `${topMargin.name}<br>${topMargin.value}`;
 
     const winRates = rows.map(row => {
+
     const cols = row.split(",");
-    return Number(cols[5]);
+
+    return parseFloat(
+        cols[5].replace("%","")
+    ) || 0;
+
 });
 
     const chartColor = "#FFD100";
