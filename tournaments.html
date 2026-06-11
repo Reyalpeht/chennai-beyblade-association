@@ -480,11 +480,11 @@ fetch(csvUrl)
             <div class="meta-box">
                 ⚔ ${t.format}
             </div>
-
+<!--
             <div class="meta-box">
                 👥 ${t.participants} Players
             </div>
-
+-->
         </div>
 
         <a href="tournament.html?id=${t.id}"
@@ -511,7 +511,6 @@ fetch(csvUrl)
             <p><strong>Venue:</strong> ${t.venue}</p>
             <p><strong>Format:</strong> ${t.format}</p>
             <p><strong>Players:</strong> ${t.participants}</p>
-
             ${
             t.status.toLowerCase()==="completed"
             ?
