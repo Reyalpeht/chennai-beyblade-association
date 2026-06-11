@@ -520,6 +520,7 @@ fetch(csvUrl)
    class="btn-yellow">
    VIEW TOURNAMENT
 </a>
+
 ${t.registrationLink ? `
 <a href="${t.registrationLink}"
    target="_blank"
@@ -527,11 +528,12 @@ ${t.registrationLink ? `
    style="margin-left:15px;">
    REGISTER
 </a>
+` : ""}
+
     </div>
 
 </div>
 `;
-
             featuredCreated = true;
             featuredTournamentName = t.name;
         }
