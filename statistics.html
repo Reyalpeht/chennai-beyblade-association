@@ -441,7 +441,7 @@ fetch(csvUrl)
         const cols = row.split(",");
 
         const blader = cols[0];
-
+        
         const matchesPlayed = Number(cols[1]);
         const winsCount = Number(cols[2]);
         
@@ -457,11 +457,11 @@ fetch(csvUrl)
         const bfCount = Number(cols[9]);
         const sfCount = Number(cols[10]);
         const soCount = Number(cols[11]);
-
+        
         bladers.push(blader);
         matches.push(matchesPlayed);
         wins.push(winsCount);
-        points.push(pointsCount);
+        points.push(seasonPoints);
         winMargins.push(winMargin);
         xf.push(xfCount);
 
@@ -471,7 +471,7 @@ fetch(csvUrl)
         totalSF += sfCount;
         totalSO += soCount;
 
-        if(pointsCount > topPoints.value)
+        iif(seasonPoints > topPoints.value)
             topPoints = {name:blader,value:pointsCount};
 
         if(winsCount > topWins.value)
